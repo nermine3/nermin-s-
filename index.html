@@ -1,1 +1,199 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secret Garden ♡</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Georgia, serif;
+    background: linear-gradient(135deg, #fce4ec, #eadcf8, #d9eaf7);
+    color: #684a70;
+    overflow: hidden;
+}
+
+.petal {
+    position: absolute;
+    top: -30px;
+    animation: fall 8s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+.card {
+    position: relative;
+    z-index: 2;
+    width: min(90%, 420px);
+    padding: 35px 25px;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 28px;
+    background: rgba(255,255,255,0.65);
+    box-shadow: 0 15px 50px #b99ac755;
+}
+
+.flower {
+    font-size: 48px;
+    animation: sway 3s ease-in-out infinite;
+}
+
+@keyframes sway {
+    50% { transform: rotate(12deg); }
+}
+
+h1 {
+    color: #b16e9c;
+    font-size: 36px;
+}
+
+p {
+    line-height: 1.7;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin: 15px 0;
+    border: 1px solid #dfb9e6;
+    border-radius: 14px;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background: #e8c5e9;
+    color: #684a70;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #d8a9df;
+}
+
+#result {
+    margin-top: 22px;
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+}
+
+.small {
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+.shake {
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+}
+</style>
+</head>
+
+<body>
+
+<div id="petals"></div>
+
+<main class="card" id="card">
+    <div class="flower">🌷</div>
+
+    <h1>Secret Garden ♡</h1>
+
+    <p>A tiny garden with a very selective entrance.<br>
+    Who's trying to get in? ✨</p>
+
+    <form id="nameForm">
+        <input id="name" type="text"
+               placeholder="Whisper your name..."
+               autocomplete="off" required>
+
+        <button type="submit">Open the little door ♡</button>
+    </form>
+
+    <div id="result" aria-live="polite"></div>
+
+    <p class="small">flowers, pixels & questionable decisions ♡</p>
+</main>
+
+<script>
+const acceptedNames = ["nermine", "nermin"];
+
+const form = document.getElementById("nameForm");
+const input = document.getElementById("name");
+const result = document.getElementById("result");
+const card = document.getElementById("card");
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = input.value.trim().toLowerCase();
+
+    card.classList.remove("shake");
+
+    if (acceptedNames.includes(name)) {
+        result.innerHTML = `
+            <div style="font-size:36px">🩷 🐇 🩷</div>
+            <strong>NERMINEEEE!!</strong><br>
+            Hiiii, welcome back! ♡<br>
+            The garden missed you.<br>
+            Come in, little flower. ♥
+        `;
+    } else {
+        result.innerHTML = `
+            <div style="font-size:36px">🚪🐈‍⬛</div>
+            <strong>UMMM... EXCUSE ME?</strong><br>
+            You're not on the list. ♡<br>
+            This garden is Nermine's territory.<br>
+            Kindly exit. Thank you. 🌸
+        `;
+
+        card.classList.add("shake");
+    }
+});
+
+const decorations = ["🌸", "♡", "✿", "🦋", "✧"];
+
+for (let i = 0; i < 22; i++) {
+    const petal = document.createElement("div");
+    petal.className = "petal";
+    petal.textContent =
+        decorations[Math.floor(Math.random() * decorations.length)];
+
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.animationDelay = Math.random() * 8 + "s";
+    petal.style.animationDuration = (6 + Math.random() * 7) + "s";
+    petal.style.fontSize = (12 + Math.random() * 18) + "px";
+
+    document.getElementById("petals").appendChild(petal);
+}
+</script>
+
+</body>
+</html>
+```
 
