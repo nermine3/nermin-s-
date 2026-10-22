@@ -4,7 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> space ݁ ˖Ი𐑼⋆</title>
+
+<title>space ݁ ˖Ი𐑼⋆</title>
 
 <style>
 * {
@@ -24,8 +25,9 @@ body {
 }
 
 .petal {
-    position: absolute;
+    position: fixed;
     top: -30px;
+    z-index: 1;
     animation: fall 8s linear infinite;
     pointer-events: none;
 }
@@ -40,11 +42,13 @@ body {
     position: relative;
     z-index: 2;
     width: min(90%, 420px);
+    max-height: 90vh;
+    overflow-y: auto;
     padding: 35px 25px;
     text-align: center;
     border: 1px solid white;
     border-radius: 28px;
-    background: rgba(255,255,255,0.65);
+    background: rgba(255, 255, 255, 0.65);
     box-shadow: 0 15px 50px #b99ac755;
 }
 
@@ -54,7 +58,9 @@ body {
 }
 
 @keyframes sway {
-    50% { transform: rotate(12deg); }
+    50% {
+        transform: rotate(12deg);
+    }
 }
 
 h1 {
@@ -77,6 +83,11 @@ input {
     outline: none;
 }
 
+input:focus {
+    border-color: #b16e9c;
+    box-shadow: 0 0 12px #dfb9e688;
+}
+
 button {
     width: 100%;
     padding: 14px;
@@ -86,6 +97,7 @@ button {
     color: #684a70;
     font-size: 15px;
     cursor: pointer;
+    transition: background 0.2s;
 }
 
 button:hover {
@@ -103,14 +115,110 @@ button:hover {
     opacity: 0.7;
 }
 
+/* THE CARD'S MENTAL BREAKDOWN */
+
 .shake {
-    animation: shake 0.3s;
+    animation: shake 1.5s ease-in-out;
 }
 
 @keyframes shake {
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
+    0%   { transform: translate(0, 0) rotate(0); }
+    5%   { transform: translate(-12px, 5px) rotate(-3deg); }
+    10%  { transform: translate(12px, -5px) rotate(3deg); }
+    15%  { transform: translate(-15px, -4px) rotate(-4deg); }
+    20%  { transform: translate(15px, 4px) rotate(4deg); }
+    25%  { transform: translate(-12px, 6px) rotate(-3deg); }
+    30%  { transform: translate(12px, -6px) rotate(3deg); }
+    35%  { transform: translate(-15px, 0) rotate(-4deg); }
+    40%  { transform: translate(15px, 0) rotate(4deg); }
+    45%  { transform: translate(-10px, 5px) rotate(-3deg); }
+    50%  { transform: translate(10px, -5px) rotate(3deg); }
+    55%  { transform: translate(-12px, 0) rotate(-3deg); }
+    60%  { transform: translate(12px, 0) rotate(3deg); }
+    65%  { transform: translate(-8px, 4px) rotate(-2deg); }
+    70%  { transform: translate(8px, -4px) rotate(2deg); }
+    80%  { transform: translate(-5px, 0) rotate(-1deg); }
+    90%  { transform: translate(5px, 0) rotate(1deg); }
+    100% { transform: translate(0, 0) rotate(0); }
+}
+
+/* THE ANGRY EMOJI APOCALYPSE */
+
+.angry-doom {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 9999;
+    font-size: 80px;
+    line-height: 1;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    animation: angryApocalypse 3s ease-in-out forwards;
+}
+
+@keyframes angryApocalypse {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+
+    10% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    45% {
+        transform: translate(-50%, -50%) scale(15);
+    }
+
+    65% {
+        transform: translate(-50%, -50%) scale(25);
+    }
+
+    80% {
+        transform: translate(-50%, -50%) scale(10);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+}
+
+/* THE WHOLE SCREEN GETS JUDGED */
+
+.screen-shake {
+    animation: screenShake 0.5s ease-in-out;
+}
+
+@keyframes screenShake {
+    0%, 100% { transform: translate(0, 0); }
+    20% { transform: translate(-5px, 3px); }
+    40% { transform: translate(5px, -3px); }
+    60% { transform: translate(-4px, -2px); }
+    80% { transform: translate(4px, 2px); }
+}
+
+/* RED ALERT */
+
+.red-alert {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    background: rgba(255, 0, 50, 0.12);
+    animation: alertFlash 0.3s ease-in-out 4;
+}
+
+@keyframes alertFlash {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* REDUCED MOTION ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+    .petal,
+    .flower {
+        animation: none;
+    }
 }
 </style>
 </head>
@@ -120,81 +228,280 @@ button:hover {
 <div id="petals"></div>
 
 <main class="card" id="card">
+
     <div class="flower">🌷</div>
 
     <h1>Secret Garden ♡</h1>
 
-    <p>A tiny garden with a very selective entrance.<br>
-    Who's trying to get in?😡😡 </p>
+    <p>
+        A tiny garden with a very selective entrance.<br>
+        Who's trying to get in? 😡😡
+    </p>
 
     <form id="nameForm">
-        <input id="name" type="text"
-               placeholder="Whisper your name😡..."
-               autocomplete="off" required>
 
-        <button type="submit">Open the little door ♡</button>
+        <input
+            id="name"
+            type="text"
+            placeholder="Whisper your name 😡..."
+            autocomplete="off"
+            required
+        >
+
+        <button type="submit">
+            Open the little door ♡
+        </button>
+
     </form>
 
     <div id="result" aria-live="polite"></div>
 
-    <p class="small"> pixels & questionable decisions :p ♡</p>
+    <p class="small">
+        pixels & questionable decisions :p ♡
+    </p>
+
 </main>
 
+<!-- YOUTUBE PLAYER -->
+
+<div id="musicPlayer" style="
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+">
+    <iframe
+        id="youtubePlayer"
+        width="200"
+        height="113"
+        src=""
+        title="Rejection soundtrack"
+        allow="autoplay; encrypted-media"
+        referrerpolicy="strict-origin-when-cross-origin"
+        style="border: 0;"
+    ></iframe>
+</div>
+
 <script>
-const acceptedNames = ["nermine", "nermin","nermi","ner","nerr","nerner","nerin","nermina"];
+
+/* ==================================
+   SETTINGS YOU CAN CUSTOMIZE
+================================== */
+
+// ADD YOUR YOUTUBE VIDEO ID HERE.
+// Example: for youtube.com/watch?v=abcdefgh123
+// the video ID is abcdefgh123.
+
+const rejectionSongID = "YOUR_VIDEO_ID_HERE";
+
+// Names allowed into the garden.
+
+const acceptedNames = [
+    "nermine",
+    "nermin",
+    "nermi",
+    "ner",
+    "nerr",
+    "nerner",
+    "nerin",
+    "nermina"
+];
+
+
+/* ==================================
+   GET THE HTML ELEMENTS
+================================== */
 
 const form = document.getElementById("nameForm");
 const input = document.getElementById("name");
 const result = document.getElementById("result");
 const card = document.getElementById("card");
 
+
+/* ==================================
+   REJECTION SOUNDTRACK
+================================== */
+
+function playRejectionSong() {
+
+    if (
+        !rejectionSongID ||
+        rejectionSongID === "YOUR_VIDEO_ID_HERE"
+    ) {
+        return;
+    }
+
+    const player = document.getElementById("youtubePlayer");
+
+    player.src =
+        "https://www.youtube.com/embed/" +
+        encodeURIComponent(rejectionSongID) +
+        "?autoplay=1";
+}
+
+
+/* ==================================
+   THE NAME CHECKER
+================================== */
+
 form.addEventListener("submit", function(event) {
+
     event.preventDefault();
 
     const name = input.value.trim().toLowerCase();
 
+    // Reset previous animations.
+
     card.classList.remove("shake");
 
+    document.querySelectorAll(".angry-doom, .red-alert")
+        .forEach(element => element.remove());
+
+    document.body.classList.remove("screen-shake");
+
     if (acceptedNames.includes(name)) {
+
+        // THE CHOSEN ONE HAS ARRIVED.
+
         result.innerHTML = `
             <div style="font-size:36px">🩷 🐇 🩷</div>
-            <strong>NERMINEEEE!!˚₊‧꒰ა 𓂋 ໒꒱ ‧₊˚</strong><br>
-            Hiiii,°❀.ೃ࿔*⟡welcome back!°❀.ೃ࿔*♡<br>
+
+            <strong>
+                NERMINEEEE!!˚₊‧꒰ა 𓂋 ໒꒱ ‧₊˚
+            </strong><br>
+
+            Hiiii,°❀.ೃ࿔*⟡ welcome back!°❀.ೃ࿔*♡<br>
+
             The garden missed you.<br>
+
             Come in. ♥
         `;
+
     } else {
+
+        // YOU HAVE COMMITTED THE CRIME OF NOT BEING NERMINE.
+
         result.innerHTML = `
-            <div style="font-size:36px">🚪🐈‍⬛</div>
-            <strong>UMMM... EXCUSE ME?</strong><br>
-            You're not on the list🤬. ♡<br>
-            This garden is Nermine's territory.<br>
-            Kindly exit. Thank you. 😑
+            <div style="font-size:42px">
+                🚪🐈‍⬛🤨
+            </div>
+
+            <strong>
+                UMMMM... EXCUSE ME???
+            </strong><br>
+
+            WRONG ANSWER. WRONG SPECIES. WRONG EVERYTHING. 🤬<br>
+
+            WHO INVITED YOU????<br>
+
+            THIS IS A PRIVATE TERRITORY.<br>
+
+            THE AUDACITY IS ACTUALLY INSANE.<br>
+
+            <strong>
+                LEAVE. NOW. THANK YOU. 😭
+            </strong>
         `;
 
+        // SHAKE THE CARD VIOLENTLY.
+
+        void card.offsetWidth;
         card.classList.add("shake");
-        card.classList.add("shake");
-        card.classList.add("shake");
-        card.classList.add("shake");
+
+        // SHAKE THE ENTIRE SCREEN TOO.
+
+        document.body.classList.remove("screen-shake");
+        void document.body.offsetWidth;
+        document.body.classList.add("screen-shake");
+
+        // FLASH THE RED ALERT.
+
+        const alert = document.createElement("div");
+
+        alert.className = "red-alert";
+
+        document.body.appendChild(alert);
+
+        setTimeout(() => {
+            alert.remove();
+        }, 1200);
+
+        // SUMMON THE ANGRY EMOJI OF DOOM.
+
+        const doom = document.createElement("div");
+
+        doom.className = "angry-doom";
+        doom.textContent = "🤬";
+
+        document.body.appendChild(doom);
+
+        // DESTROY THE EVIDENCE AFTER THE APOCALYPSE.
+
+        setTimeout(() => {
+            doom.remove();
+        }, 3000);
+
+        // ATTEMPT TO PLAY THE REJECTION SONG.
+
+        playRejectionSong();
+
     }
+
 });
 
-const decorations = ["🙀", "♡", "✿", "🦋", "✧","🤎","🌸","𓊆ྀི❤︎𓊇ྀི","🍒","👻","˚˖𓍢ִ໋❀","🐰","´ཀ`"];
+
+/* ==================================
+   FALLING CUTE DECORATIONS
+================================== */
+
+const decorations = [
+    "🙀",
+    "♡",
+    "✿",
+    "🦋",
+    "✧",
+    "🌸",
+    "𓊆ྀི❤︎𓊇ྀི",
+    "˚˖𓍢ִ໋❀",
+    "🐰",
+    "´ཀ`",
+    "⋆｡‧˚ʚ🍓ɞ˚‧｡⋆"
+];
 
 for (let i = 0; i < 22; i++) {
+
     const petal = document.createElement("div");
+
     petal.className = "petal";
+
     petal.textContent =
-        decorations[Math.floor(Math.random() * decorations.length)];
+        decorations[
+            Math.floor(Math.random() * decorations.length)
+        ];
 
     petal.style.left = Math.random() * 100 + "vw";
-    petal.style.animationDelay = Math.random() * 8 + "s";
-    petal.style.animationDuration = (6 + Math.random() * 7) + "s";
-    petal.style.fontSize = (12 + Math.random() * 18) + "px";
+
+    petal.style.animationDelay =
+        Math.random() * 8 + "s";
+
+    petal.style.animationDuration =
+        (6 + Math.random() * 7) + "s";
+
+    petal.style.fontSize =
+        (12 + Math.random() * 18) + "px";
 
     document.getElementById("petals").appendChild(petal);
+
 }
+
 </script>
+
+</body>
+</html>
+```
+
 
 </body>
 </html>
