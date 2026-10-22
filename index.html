@@ -243,7 +243,7 @@ button:hover {
         <input
             id="name"
             type="text"
-            placeholder="Whisper your name 😡.."
+            placeholder="Whisper your name 😡..."
             autocomplete="off"
             required
         >
@@ -363,46 +363,37 @@ form.addEventListener("submit", function(event) {
 
     if (acceptedNames.includes(name)) {
 
-       ```javascript
         // THE CHOSEN ONE HAS ARRIVED.
 
         result.innerHTML = `
             <div style="font-size:36px">𓍢ִ໋🌷͙֒ 🐇𓍢ִ໋🌷͙֒ 𓍢ִ໋🌷͙֒</div>
 
             <strong>
-              !!˚₊‧꒰ა 𓂋 ໒꒱ ‧₊˚
+                NERMINEEEE!!˚₊‧꒰ა 𓂋 ໒꒱ ‧₊˚
             </strong><br>
 
             Hiiii,°❀.ೃ࿔*⟡ welcome back!°❀.ೃ࿔*♡<br>
 
-            The garden missed u.<br>
-
-            Come in.
+            The garden missed you.<br>
+            
+            Come in. ♥
         `;
-
-        const welcomeSound = document.createElement("iframe");
-        welcomeSound.src = "https://www.youtube.com/embed/3W0hFSTmViM?autoplay=1";
-        welcomeSound.allow = "autoplay; encrypted-media";
-        welcomeSound.style.position = "absolute";
-        welcomeSound.style.width = "1px";
-        welcomeSound.style.height = "1px";
-        welcomeSound.style.opacity = "0";
-        welcomeSound.style.border = "0";
-        document.body.appendChild(welcomeSound);
-
-        setTimeout(function() {
-            window.location.assign("note.html");
-        }, 10000);
+      const welcomeSound = document.createElement("iframe");
+welcomeSound.src = "https://www.youtube.com/watch?v=9BnGWtwYlWI?autoplay=1";
+welcomeSound.allow = "autoplay";
+welcomeSound.style.display = "none";
+document.body.appendChild(welcomeSound);
+       setTimeout(function() {
+    window.location.assign("note.html");
+}, 1500);
 
     } else {
-```
-
 
         // YOU HAVE COMMITTED THE CRIME OF NOT BEING NERMINE.
 
         result.innerHTML = `
             <div style="font-size:42px">
-                🚪
+                🚪🐈‍⬛🤨
             </div>
 
             <strong>
@@ -526,4 +517,5 @@ for (let i = 0; i < 22; i++) {
 </body>
 </html>
 ```
+
 
