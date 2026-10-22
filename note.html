@@ -1,0 +1,218 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Little Secret Notebook ♡</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 30px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Georgia, serif;
+    background: linear-gradient(135deg, #fce4ec, #eadcf8, #d9eaf7);
+    color: #684a70;
+}
+
+.notebook {
+    width: min(100%, 650px);
+    padding: 30px;
+    border: 1px solid white;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 15px 50px #b99ac755;
+    text-align: center;
+}
+
+.flower {
+    font-size: 45px;
+    animation: sway 3s ease-in-out infinite;
+}
+
+@keyframes sway {
+    50% {
+        transform: rotate(12deg);
+    }
+}
+
+h1 {
+    color: #b16e9c;
+    font-size: clamp(25px, 6vw, 36px);
+}
+
+.intro {
+    line-height: 1.8;
+}
+
+textarea {
+    display: block;
+    width: 100%;
+    min-height: 350px;
+    margin-top: 25px;
+    padding: 20px;
+    resize: vertical;
+    border: 1px solid #dfb9e6;
+    border-radius: 18px;
+    outline: none;
+    background: #fffafd;
+    color: #684a70;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+textarea:focus {
+    border-color: #b16e9c;
+    box-shadow: 0 0 12px #dfb9e688;
+}
+
+button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background: #e8c5e9;
+    color: #684a70;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #d8a9df;
+}
+
+#saveStatus {
+    min-height: 24px;
+    margin-top: 12px;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 20px;
+    color: #a36eaa;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.back:hover {
+    text-decoration: underline;
+}
+
+.small {
+    margin-top: 25px;
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<main class="notebook">
+
+    <div class="flower">🌷 🐇 🌷</div>
+
+    <h1>Welcome to your little world ♡</h1>
+
+    <p class="intro">
+        A little space for your thoughts, dreams,
+        weird ideas, memories, secrets, and everything in between. ♡
+        <br>
+        <br>
+        Nobody is grading your thoughts here.
+        Just write.
+    </p>
+
+    <textarea
+        id="myNote"
+        placeholder="Dear diary... 𓍢ִ໋🌷͙֒
+
+Write whatever you want here...
+
+Your thoughts, your ideas, your little universe."
+        spellcheck="false"
+    ></textarea>
+
+    <button id="saveButton">
+        Save my little universe ♡
+    </button>
+
+    <div id="saveStatus" aria-live="polite">
+        Your notebook is ready. 🌸
+    </div>
+
+    <a class="back" href="index.html">
+        ← Return to the Secret Garden
+    </a>
+
+    <p class="small">
+        your thoughts belong to you ♡
+    </p>
+
+</main>
+
+<script>
+
+// GET THE NOTEBOOK ELEMENTS.
+
+const note = document.getElementById("myNote");
+const saveButton = document.getElementById("saveButton");
+const saveStatus = document.getElementById("saveStatus");
+
+// LOAD YOUR PREVIOUS NOTE.
+
+note.value = localStorage.getItem("secretGardenNote") || "";
+
+// SAVE THE NOTE.
+
+function saveNote() {
+
+    try {
+
+        localStorage.setItem("secretGardenNote", note.value);
+
+        saveStatus.textContent = "Saved. Your little universe is safe. ♡";
+
+    } catch (error) {
+
+        saveStatus.textContent =
+            "Couldn't save. Your browser storage may be unavailable.";
+
+    }
+
+}
+
+// SAVE AUTOMATICALLY WHEN YOU WRITE.
+
+note.addEventListener("input", saveNote);
+
+// ALSO PROVIDE A SAVE BUTTON.
+
+saveButton.addEventListener("click", saveNote);
+
+</script>
+
+</body>
+
+</html>
+```
