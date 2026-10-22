@@ -375,11 +375,14 @@ form.addEventListener("submit", function(event) {
             Hiiii,°❀.ೃ࿔*⟡ welcome back!°❀.ೃ࿔*♡<br>
 
             The garden missed you.<br>
-
+            
             Come in. ♥
         `;
-        const welcomeSound = new Audio("welcome.mp3");
-welcomeSound.play();
+      const welcomeSound = document.createElement("iframe");
+welcomeSound.src = "https://www.youtube.com/embed/9mAmnXceObE?autoplay=1";
+welcomeSound.allow = "autoplay";
+welcomeSound.style.display = "none";
+document.body.appendChild(welcomeSound);
        setTimeout(function() {
     window.location.assign("note.html");
 }, 1500);
