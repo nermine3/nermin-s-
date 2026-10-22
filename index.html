@@ -363,31 +363,40 @@ form.addEventListener("submit", function(event) {
 
     if (acceptedNames.includes(name)) {
 
+       ```javascript
         // THE CHOSEN ONE HAS ARRIVED.
 
         result.innerHTML = `
             <div style="font-size:36px">𓍢ִ໋🌷͙֒ 🐇𓍢ִ໋🌷͙֒ 𓍢ִ໋🌷͙֒</div>
 
             <strong>
-                NERMINEEEE!!˚₊‧꒰ა 𓂋 ໒꒱ ‧₊˚
+              !!˚₊‧꒰ა 𓂋 ໒꒱ ‧₊˚
             </strong><br>
 
             Hiiii,°❀.ೃ࿔*⟡ welcome back!°❀.ೃ࿔*♡<br>
 
-            The garden missed you.<br>
-            
-            Come in. ♥
+            The garden missed u.<br>
+
+            Come in.
         `;
-      const welcomeSound = document.createElement("iframe");
-      welcomeSound.src = "https://www.youtube.com/watch?v=3W0hFSTmViM";
-      welcomeSound.allow = "autoplay";
-      welcomeSound.style.display = "none";
-      document.body.appendChild(welcomeSound);
-       setTimeout(function() {
-    window.location.assign("note.html");
-}, 1500);
+
+        const welcomeSound = document.createElement("iframe");
+        welcomeSound.src = "https://www.youtube.com/embed/3W0hFSTmViM?autoplay=1";
+        welcomeSound.allow = "autoplay; encrypted-media";
+        welcomeSound.style.position = "absolute";
+        welcomeSound.style.width = "1px";
+        welcomeSound.style.height = "1px";
+        welcomeSound.style.opacity = "0";
+        welcomeSound.style.border = "0";
+        document.body.appendChild(welcomeSound);
+
+        setTimeout(function() {
+            window.location.assign("note.html");
+        }, 10000);
 
     } else {
+```
+
 
         // YOU HAVE COMMITTED THE CRIME OF NOT BEING NERMINE.
 
