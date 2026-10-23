@@ -1,1 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Little Progress Archive :p ♡</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 35px 15px;
+    font-family: Georgia, serif;
+    color: #684a70;
+    background: linear-gradient(135deg, #fce4ec, #eadcf8, #d9eaf7);
+}
+
+main {
+    width: min(100%, 750px);
+    margin: auto;
+    padding: 30px;
+    border: 1px solid white;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.78);
+    box-shadow: 0 15px 50px #b99ac755;
+}
+
+h1, h2 { color: #b16e9c; }
+
+h1 { text-align: center; font-weight: normal; }
+
+.subtitle { text-align: center; line-height: 1.8; }
+
+label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 7px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dfb9e6;
+    border-radius: 12px;
+    background: #fffaff;
+    color: #684a70;
+    font: inherit;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+button, .back {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 12px;
+    background: #e8c5e9;
+    color: #684a70;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button:hover, .back:hover { background: #d8a9df; }
+
+.entry {
+    margin-top: 18px;
+    padding: 18px;
+    border-left: 4px solid #c99bd8;
+    border-radius: 12px;
+    background: #fffaff;
+    overflow-wrap: anywhere;
+}
+
+.entry h3 { margin-top: 0; }
+
+.entry small { opacity: 0.7; }
+
+.delete {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #f3dce9;
+}
+
+.empty { opacity: 0.7; }
+
+footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.8;
+}
+</style>
+
+</head>
+
+<body>
+
+<main>
+    <h1>♡ My Little Progress Archive :p ♡</h1>
+
+```
+<p class="subtitle">
+    A record of things I once didn't know<br>
+    and things I taught myself, one step at a time. ✧
+</p>
+
+<h2>✿ Add something you learned</h2>
+
+<form id="progressForm">
+    <label for="language">Subject</label>
+    <select id="language" required>
+        <option value="HTML">HTML</option>
+        <option value="CSS">CSS</option>
+        <option value="JavaScript">JavaScript</option>
+        <option value="C">C</option>
+        <option value="Java">Java</option>
+        <option value="Python">Python</option>
+        <option value="Git & GitHub">Git & GitHub</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <label for="topic">What did I learn?</label>
+    <input id="topic" type="text"
+           placeholder="e.g. if statements, loops, HTML links..."
+           required>
+
+    <label for="details">What do I understand now?</label>
+    <textarea id="details"
+              placeholder="Explain it in your own words. Include code or examples if you like."
+              required></textarea>
+
+    <label for="date">Date</label>
+    <input id="date" type="date" required>
+
+    <button type="submit">Save my progress ♡</button>
+</form>
+
+<h2>✧ Things I've learned ✧</h2>
+<div id="entries"></div>
+
+<footer>
+    hii.<br>
+    only fun learning >:)  !. ⋆｡°✩
+    <br>
+    <a class="back" href="choice.html">← Back to my little worlds</a>
+</footer>
+```
+
+</main>
+
+<script>
+const form = document.getElementById("progressForm");
+const entries = document.getElementById("entries");
+const dateInput = document.getElementById("date");
+
+dateInput.value = new Date().toISOString().slice(0, 10);
+
+let lessons = JSON.parse(localStorage.getItem("myLessons")) || [];
+
+function displayLessons() {
+    entries.innerHTML = "";
+
+    if (lessons.length === 0) {
+        entries.innerHTML =
+            '<p class="empty">Your archive starts with your first lesson. ♡</p>';
+        return;
+    }
+
+    lessons.forEach(function(lesson, index) {
+        const card = document.createElement("article");
+        card.className = "entry";
+
+        const title = document.createElement("h3");
+        title.textContent = lesson.language + " — " + lesson.topic;
+
+        const date = document.createElement("small");
+        date.textContent = lesson.date;
+
+        const details = document.createElement("p");
+        details.textContent = lesson.details;
+
+        const remove = document.createElement("button");
+        remove.className = "delete";
+        remove.textContent = "Delete entry";
+        remove.type = "button";
+
+        remove.addEventListener("click", function() {
+            lessons.splice(index, 1);
+            localStorage.setItem("myLessons", JSON.stringify(lessons));
+            displayLessons();
+        });
+
+        card.append(title, date, details, remove);
+        entries.appendChild(card);
+    });
+}
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const lesson = {
+        language: document.getElementById("language").value,
+        topic: document.getElementById("topic").value.trim(),
+        details: document.getElementById("details").value.trim(),
+        date: dateInput.value
+    };
+
+    lessons.unshift(lesson);
+
+    localStorage.setItem("nermine's Lessons :P", JSON.stringify(lessons));
+
+    form.reset();
+    dateInput.value = new Date().toISOString().slice(0, 10);
+
+    displayLessons();
+});
+
+displayLessons();
+</script>
+
+</body>
+</html>
 
