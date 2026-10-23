@@ -4,13 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>space ݁ ˖Ი𐑼⋆</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
@@ -33,9 +30,7 @@ body {
 }
 
 @keyframes fall {
-    to {
-        transform: translateY(110vh) rotate(360deg);
-    }
+    to { transform: translateY(110vh) rotate(360deg); }
 }
 
 .card {
@@ -58,9 +53,7 @@ body {
 }
 
 @keyframes sway {
-    50% {
-        transform: rotate(12deg);
-    }
+    50% { transform: rotate(12deg); }
 }
 
 h1 {
@@ -68,9 +61,7 @@ h1 {
     font-size: 36px;
 }
 
-p {
-    line-height: 1.7;
-}
+p { line-height: 1.7; }
 
 input {
     width: 100%;
@@ -88,19 +79,21 @@ input:focus {
     box-shadow: 0 0 12px #dfb9e688;
 }
 
-button {
+button, .continue-link {
+    display: inline-block;
     width: 100%;
     padding: 14px;
     border: none;
     border-radius: 14px;
     background: #e8c5e9;
     color: #684a70;
+    font-family: Georgia, serif;
     font-size: 15px;
+    text-decoration: none;
     cursor: pointer;
-    transition: background 0.2s;
 }
 
-button:hover {
+button:hover, .continue-link:hover {
     background: #d8a9df;
 }
 
@@ -115,34 +108,18 @@ button:hover {
     opacity: 0.7;
 }
 
-/* THE CARD'S MENTAL BREAKDOWN */
-
-.shake {
-    animation: shake 1.5s ease-in-out;
-}
+.shake { animation: shake 1.5s ease-in-out; }
 
 @keyframes shake {
-    0%   { transform: translate(0, 0) rotate(0); }
-    5%   { transform: translate(-12px, 5px) rotate(-3deg); }
-    10%  { transform: translate(12px, -5px) rotate(3deg); }
-    15%  { transform: translate(-15px, -4px) rotate(-4deg); }
-    20%  { transform: translate(15px, 4px) rotate(4deg); }
-    25%  { transform: translate(-12px, 6px) rotate(-3deg); }
-    30%  { transform: translate(12px, -6px) rotate(3deg); }
-    35%  { transform: translate(-15px, 0) rotate(-4deg); }
-    40%  { transform: translate(15px, 0) rotate(4deg); }
-    45%  { transform: translate(-10px, 5px) rotate(-3deg); }
-    50%  { transform: translate(10px, -5px) rotate(3deg); }
-    55%  { transform: translate(-12px, 0) rotate(-3deg); }
-    60%  { transform: translate(12px, 0) rotate(3deg); }
-    65%  { transform: translate(-8px, 4px) rotate(-2deg); }
-    70%  { transform: translate(8px, -4px) rotate(2deg); }
-    80%  { transform: translate(-5px, 0) rotate(-1deg); }
-    90%  { transform: translate(5px, 0) rotate(1deg); }
-    100% { transform: translate(0, 0) rotate(0); }
+    0%, 100% { transform: translate(0,0) rotate(0); }
+    10% { transform: translate(12px,-5px) rotate(3deg); }
+    20% { transform: translate(-15px,4px) rotate(-4deg); }
+    30% { transform: translate(12px,-6px) rotate(3deg); }
+    40% { transform: translate(-15px,0) rotate(-4deg); }
+    50% { transform: translate(10px,-5px) rotate(3deg); }
+    60% { transform: translate(-12px,0) rotate(-3deg); }
+    80% { transform: translate(5px,0) rotate(1deg); }
 }
-
-/* THE ANGRY EMOJI APOCALYPSE */
 
 .angry-doom {
     position: fixed;
@@ -150,53 +127,28 @@ button:hover {
     left: 50%;
     z-index: 9999;
     font-size: 80px;
-    line-height: 1;
     pointer-events: none;
     transform: translate(-50%, -50%);
     animation: angryApocalypse 3s ease-in-out forwards;
 }
 
 @keyframes angryApocalypse {
-    0% {
-        transform: translate(-50%, -50%) scale(0);
-    }
-
-    10% {
-        transform: translate(-50%, -50%) scale(1);
-    }
-
-    45% {
-        transform: translate(-50%, -50%) scale(15);
-    }
-
-    65% {
-        transform: translate(-50%, -50%) scale(25);
-    }
-
-    80% {
-        transform: translate(-50%, -50%) scale(10);
-    }
-
-    100% {
-        transform: translate(-50%, -50%) scale(0);
-    }
+    0%, 100% { transform: translate(-50%,-50%) scale(0); }
+    10% { transform: translate(-50%,-50%) scale(1); }
+    45% { transform: translate(-50%,-50%) scale(15); }
+    65% { transform: translate(-50%,-50%) scale(25); }
+    80% { transform: translate(-50%,-50%) scale(10); }
 }
 
-/* THE WHOLE SCREEN GETS JUDGED */
-
-.screen-shake {
-    animation: screenShake 0.5s ease-in-out;
-}
+.screen-shake { animation: screenShake 0.5s ease-in-out; }
 
 @keyframes screenShake {
-    0%, 100% { transform: translate(0, 0); }
-    20% { transform: translate(-5px, 3px); }
-    40% { transform: translate(5px, -3px); }
-    60% { transform: translate(-4px, -2px); }
-    80% { transform: translate(4px, 2px); }
+    0%, 100% { transform: translate(0,0); }
+    20% { transform: translate(-5px,3px); }
+    40% { transform: translate(5px,-3px); }
+    60% { transform: translate(-4px,-2px); }
+    80% { transform: translate(4px,2px); }
 }
-
-/* RED ALERT */
 
 .red-alert {
     position: fixed;
@@ -212,13 +164,8 @@ button:hover {
     50% { opacity: 1; }
 }
 
-/* REDUCED MOTION ACCESSIBILITY */
-
 @media (prefers-reduced-motion: reduce) {
-    .petal,
-    .flower {
-        animation: none;
-    }
+    .petal, .flower { animation: none; }
 }
 </style>
 </head>
@@ -228,80 +175,47 @@ button:hover {
 <div id="petals"></div>
 
 <main class="card" id="card">
-
     <div class="flower">🌷</div>
 
     <h1>Secret Garden ♡</h1>
 
     <p>
-        A space .<br>
-          <img
-        src="https://user-images.githubusercontent.com/74038190/226190908-cd4e0a61-801d-4b69-955b-5bd82eb7c10e.gif"
-        alt="Cute animation"
-        width="120"
-    ><br>
-        Who's trying to get in? 
+        A space.<br>
+        <img
+            src="https://user-images.githubusercontent.com/74038190/226190908-cd4e0a61-801d-4b69-955b-5bd82eb7c10e.gif"
+            alt="Cute animation"
+            width="120"
+        ><br>
+        Who's trying to get in?
     </p>
 
     <form id="nameForm">
-
         <input
             id="name"
             type="text"
-            placeholder=" your name"
+            placeholder="your name"
             autocomplete="off"
             required
         >
-
-        <button type="submit">
-            Open the  door 
-        </button>
-
+        <button type="submit">Open the door</button>
     </form>
 
     <div id="result" aria-live="polite"></div>
 
-    <p class="small">
-        pixels :p ♡
-    </p>
-
+    <p class="small">pixels :p ♡</p>
 </main>
 
-<!-- YOUTUBE PLAYER -->
-
-<div id="musicPlayer" style="
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-">
-    <iframe
-        id="youtubePlayer"
-        width="200"
-        height="113"
-        src=""
-        title="Rejection soundtrack"
-        allow="autoplay; encrypted-media"
-        referrerpolicy="strict-origin-when-cross-origin"
-        style="border: 0;"
-    ></iframe>
-</div>
+<div id="musicPlayer" style="position:fixed;width:1px;height:1px;overflow:hidden;"></div>
 
 <script>
+// PUT ONLY THE VIDEO ID HERE.
+// Example: https://www.youtube.com/watch?v=ABC123
+// Video ID: ABC123
 
-/* ==================================
-   SETTINGS YOU CAN CUSTOMIZE
-================================== */
+const acceptanceSongID = "PUT_VIDEO_ID_HERE";
 
-// ADD YOUR YOUTUBE VIDEO ID HERE.
-// Example: for youtube.com/watch?v=abcdefgh123
-// the video ID is abcdefgh123.
-
+// Rejection song already in your original code:
 const rejectionSongID = "lYKKdw_d2Hw";
-
-// Names allowed into the garden.
 
 const acceptedNames = [
     "nermine",
@@ -314,213 +228,115 @@ const acceptedNames = [
     "nermina"
 ];
 
-
-/* ==================================
-   GET THE HTML ELEMENTS
-================================== */
-
 const form = document.getElementById("nameForm");
 const input = document.getElementById("name");
 const result = document.getElementById("result");
 const card = document.getElementById("card");
+const musicPlayer = document.getElementById("musicPlayer");
 
+function playSong(videoID) {
+    if (!videoID || videoID === "PUT_VIDEO_ID_HERE") return;
 
-/* ==================================
-   REJECTION SOUNDTRACK
-================================== */
+    musicPlayer.innerHTML = "";
 
-function playRejectionSong() {
+    const player = document.createElement("iframe");
 
-    if (
-        !rejectionSongID ||
-        rejectionSongID === "YOUR_VIDEO_ID_HERE"
-    ) {
-        return;
-    }
-
-    const player = document.getElementById("youtubePlayer");
-
+    player.width = "1";
+    player.height = "1";
     player.src =
         "https://www.youtube.com/embed/" +
-        encodeURIComponent(rejectionSongID) +
+        encodeURIComponent(videoID) +
         "?autoplay=1";
+
+    player.allow = "autoplay; encrypted-media";
+    player.title = "Garden music";
+
+    musicPlayer.appendChild(player);
 }
 
-
-/* ==================================
-   THE NAME CHECKER
-================================== */
-
 form.addEventListener("submit", function(event) {
-
     event.preventDefault();
 
     const name = input.value.trim().toLowerCase();
 
-    // Reset previous animations.
-
     card.classList.remove("shake");
-
     document.querySelectorAll(".angry-doom, .red-alert")
         .forEach(element => element.remove());
-
     document.body.classList.remove("screen-shake");
 
     if (acceptedNames.includes(name)) {
-
-        // THE CHOSEN ONE HAS ARRIVED.
-
         result.innerHTML = `
-            <div style="font-size:36px">𓍢ִ໋🌷͙֒ 🐇𓍢ִ໋🌷͙֒ 𓍢ִ໋🌷͙֒</div>
-
-            <strong>
-              ˚₊‧꒰ა 𓂋 ໒꒱ ‧₊˚
-            </strong><br>
-
-           °❀.ೃ࿔*⟡ welcome back!°❀.ೃ࿔*♡<br>
-
-           .<br>
-            
-            Comein
+            <div style="font-size:36px">
+                𓍢ִ໋🌷͙֒ 🐇 𓍢ִ໋🌷͙֒
+            </div>
+            <strong>˚₊‧꒰ა 𓂋 ໒꒱ ‧₊˚</strong><br>
+            °❀.ೃ࿔*⟡ welcome back! °❀.ೃ࿔*♡<br>
+            Come in ♡<br><br>
+            <a class="continue-link" href="choice.html">
+                Enter the garden ♡
+            </a>
         `;
-      const welcomeSound = document.createElement("iframe");
-welcomeSound.src = "https://www.youtube.com/watch?v=9BnGWtwYlWI?autoplay=1";
-welcomeSound.allow = "autoplay";
-welcomeSound.style.display = "none";
-document.body.appendChild(welcomeSound);
-    setTimeout(function() {
-window.location.assign("choice.html");
-}, 1500);
+
+        // Play your acceptance song.
+        playSong(acceptanceSongID);
 
     } else {
-
-        // YOU HAVE COMMITTED THE CRIME OF NOT BEING NERMINE.
-
         result.innerHTML = `
-            <div style="font-size:42px">
-                🚪🐈‍⬛
-            </div>
-
-            <strong>
-                UMMMM... EXCUSE ME???
-            </strong><br>
-
+            <div style="font-size:42px">🚪🐈‍⬛</div>
+            <strong>UMMMM... EXCUSE ME???</strong><br>
             WRONG ANSWER.. 🤬<br>
-
             WHO INVITED YOU????<br>
-
             THIS IS A PRIVATE TERRITORY.<br>
-
-            CAN'T YOU SEE??!.<br>
-
-            <strong>
-                LEAVE. NOW!!! THANK YOU. 
-            </strong>
+            CAN'T YOU SEE??!<br>
+            <strong>LEAVE. NOW!!! THANK YOU.</strong>
         `;
-
-        // SHAKE THE CARD VIOLENTLY.
 
         void card.offsetWidth;
         card.classList.add("shake");
 
-        // SHAKE THE ENTIRE SCREEN TOO.
-
-        document.body.classList.remove("screen-shake");
         void document.body.offsetWidth;
         document.body.classList.add("screen-shake");
 
-        // FLASH THE RED ALERT.
-
         const alert = document.createElement("div");
-
         alert.className = "red-alert";
-
         document.body.appendChild(alert);
 
-        setTimeout(() => {
-            alert.remove();
-        }, 1200);
-
-        // SUMMON THE ANGRY EMOJI OF DOOM.
+        setTimeout(() => alert.remove(), 1200);
 
         const doom = document.createElement("div");
-
         doom.className = "angry-doom";
         doom.textContent = "🤬";
-
         document.body.appendChild(doom);
 
-        // DESTROY THE EVIDENCE AFTER THE APOCALYPSE.
+        setTimeout(() => doom.remove(), 3000);
 
-        setTimeout(() => {
-            doom.remove();
-        }, 3000);
-
-        // ATTEMPT TO PLAY THE REJECTION SONG.
-
-        playRejectionSong();
-
+        playSong(rejectionSongID);
     }
-
 });
 
-
-/* ==================================
-   FALLING CUTE DECORATIONS
-================================== */
-
 const decorations = [
-    "🙀",
-    "♡",
-    "✿",
-    "⭐",
-    "🦋",
-    "✧",
-    "🌸",
-    "𓊆ྀི❤︎𓊇ྀི",
-    "˚˖𓍢ִ໋❀",
-    "🐰",
-    "⋆.˚🦋༘⋆",
-    "🍓",
-    "´ཀ`",
+    "🙀", "♡", "✿", "⭐", "🦋", "✧", "🌸",
+    "𓊆ྀི❤︎𓊇ྀི", "˚˖𓍢ִ໋❀", "🐰",
+    "⋆.˚🦋༘⋆", "🍓", "´ཀ`",
     "⋆｡‧˚ʚ🍓ɞ˚‧｡⋆"
 ];
 
 for (let i = 0; i < 22; i++) {
-
     const petal = document.createElement("div");
-
     petal.className = "petal";
 
     petal.textContent =
-        decorations[
-            Math.floor(Math.random() * decorations.length)
-        ];
+        decorations[Math.floor(Math.random() * decorations.length)];
 
     petal.style.left = Math.random() * 100 + "vw";
-
-    petal.style.animationDelay =
-        Math.random() * 8 + "s";
-
-    petal.style.animationDuration =
-        (6 + Math.random() * 7) + "s";
-
-    petal.style.fontSize =
-        (12 + Math.random() * 18) + "px";
+    petal.style.animationDelay = Math.random() * 8 + "s";
+    petal.style.animationDuration = (6 + Math.random() * 7) + "s";
+    petal.style.fontSize = (12 + Math.random() * 18) + "px";
 
     document.getElementById("petals").appendChild(petal);
-
 }
-
 </script>
 
 </body>
 </html>
-
-
-
-</body>
-</html>
-
-
 
