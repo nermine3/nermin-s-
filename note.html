@@ -3,14 +3,12 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>empty pagee</title>
 
 <style>
-
 * {
     box-sizing: border-box;
 }
@@ -25,16 +23,20 @@ body {
     font-family: Georgia, serif;
     background: linear-gradient(135deg, #fce4ec, #eadcf8, #d9eaf7);
     color: #684a70;
+    position: relative;
 }
 
+/* NOTEBOOK */
 .notebook {
     width: min(100%, 650px);
     padding: 30px;
     border: 1px solid white;
     border-radius: 28px;
-    background: rgba(255, 255, 255, 0.78);
+    background: rgba(255, 255, 255, 0.88);
     box-shadow: 0 15px 50px #b99ac755;
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 .flower {
@@ -46,6 +48,20 @@ body {
     50% {
         transform: rotate(12deg);
     }
+}
+
+/* GIF DECORATION */
+.side-gif {
+    position: fixed;
+    right: max(15px, calc((100vw - 1050px) / 2));
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(100px, 16vw, 190px);
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
+    z-index: 1;
+    pointer-events: none;
 }
 
 h1 {
@@ -122,31 +138,42 @@ button:hover {
     opacity: 0.7;
 }
 
-</style>
+/* KEEP THE GIF FROM CROWDING THE NOTEBOOK ON SMALL SCREENS */
+@media (max-width: 900px) {
+    .side-gif {
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        transform: none;
+        width: 85px;
+        max-height: 100px;
+        opacity: 0.85;
+    }
 
+    .notebook {
+        padding: 25px 20px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<main class="notebook">
-
-    <div class="flower">🌷 🐇 🌷</div>
-   ```html
 <img
     class="side-gif"
     src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3hzeGIzejhqcnE1ZmM3a3V3bXNjOG13MHczNHVvNXZjYXV6cjU4cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/VFHa3Kg39gFLVbinN1/giphy.gif"
-    alt="Cute animation"
+    alt="Cute animated decoration"
 >
-```
 
-    
+<main class="notebook">
+
+    <div class="flower">🌷 🐇 🌷</div>
+
     <h1>Welcome ♡</h1>
 
     <p class="intro">
-        A little space 
-        <br>
-        <br>
-      
+        A little space
+        <br><br>
         Just write.
     </p>
 
@@ -156,70 +183,48 @@ button:hover {
 
 Write whatever you want here...
 
- thoughts."
+thoughts."
         spellcheck="false"
     ></textarea>
 
-    <button id="saveButton">
-        Save  ♡
-    </button>
+    <button id="saveButton">Save ♡</button>
 
     <div id="saveStatus" aria-live="polite">
-         notebook is ready. 
+        notebook is ready.
     </div>
 
-    <a class="back" href="index.html">
-        ← Return 
-    </a>
+    <a class="back" href="index.html">← Return</a>
 
-    <p class="small">
-        hii
-    </p>
+    <p class="small">hii</p>
 
 </main>
 
 <script>
-
-// GET THE NOTEBOOK ELEMENTS.
-
 const note = document.getElementById("myNote");
 const saveButton = document.getElementById("saveButton");
 const saveStatus = document.getElementById("saveStatus");
 
-// LOAD YOUR PREVIOUS NOTE.
-
+// LOAD YOUR PREVIOUS NOTE
 note.value = localStorage.getItem("secretGardenNote") || "";
 
-// SAVE THE NOTE.
-
+// SAVE THE NOTE
 function saveNote() {
-
     try {
-
         localStorage.setItem("secretGardenNote", note.value);
-
         saveStatus.textContent = "Saved. Your little universe is safe. ♡";
-
     } catch (error) {
-
         saveStatus.textContent =
             "Couldn't save. Your browser storage may be unavailable.";
-
     }
-
 }
 
-// SAVE AUTOMATICALLY WHEN YOU WRITE.
-
+// SAVE AUTOMATICALLY WHEN YOU WRITE
 note.addEventListener("input", saveNote);
 
-// ALSO PROVIDE A SAVE BUTTON.
-
+// SAVE BUTTON
 saveButton.addEventListener("click", saveNote);
-
 </script>
 
 </body>
-
 </html>
 ```
