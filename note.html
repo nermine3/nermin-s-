@@ -180,6 +180,23 @@ button:hover {
     color: #684a70;
     cursor: pointer;
 }
+    
+    
+
+.intro-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.intro-gif {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+}
+
 
 
 </style>
@@ -213,11 +230,17 @@ button:hover {
 
     <h1>♡</h1>
 
-    <p class="intro">
-        A little space
-        <br><br>
-        Just write.
-    </p>
+<div class="intro-row">
+    <span>A little space</span>
+    <img
+        class="intro-gif"
+        src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnFwaWtqdDVoZWJ5djN0Z25xdHJ5aXV3Yjg3MTMyczBuYzVnang4cyZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/ihoMDs9ZIY7IvP8Fgh/giphy.gif"
+        alt="Tiny decoration"
+    >
+</div>
+
+<p>Just write.</p>
+
 
     <textarea
         id="myNote"
