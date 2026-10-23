@@ -51,22 +51,27 @@ body {
 }
 
 /* GIF DECORATION */
+
+
 .side-gif {
     position: fixed;
-    right: max(15px, calc((100vw - 1050px) / 2));
     top: 50%;
     transform: translateY(-50%);
-    width: clamp(100px, 16vw, 190px);
-    height: auto;
-    max-height: 70vh;
+    width: clamp(220px, 27vw, 360px);
+    height: 55vh;
     object-fit: contain;
     z-index: 1;
     pointer-events: none;
 }
-    .second-gif {
-    right: auto;
-    left: max(15px, calc((100vw - 1050px) / 2));
+
+.side-gif:not(.second-gif) {
+    right: 0;
 }
+
+.side-gif.second-gif {
+    left: 0;
+}
+
 
 h1 {
     color: #b16e9c;
