@@ -53,11 +53,12 @@ body {
 /* GIF DECORATION */
 
 
+
 .side-gif {
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
-    width: clamp(220px, 27vw, 360px);
+    width: 25vw;
     height: 55vh;
     object-fit: contain;
     z-index: 1;
@@ -65,12 +66,16 @@ body {
 }
 
 .side-gif:not(.second-gif) {
-    right: 0;
+    left: 0;
 }
 
 .side-gif.second-gif {
-    left: 0;
+    left: auto;
+    right: 0;
+    width: 27vw;
 }
+
+
 
 
 h1 {
@@ -161,6 +166,7 @@ button:hover {
 
     .notebook {
         padding: 25px 20px;
+        z-index: 2;
     }
 }
     
