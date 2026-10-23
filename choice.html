@@ -1,1 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choose Your World ♡</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: Georgia, serif;
+    color: #684a70;
+    background: linear-gradient(135deg, #fce4ec, #eadcf8, #d9eaf7);
+}
+
+.petal {
+    position: fixed;
+    top: -30px;
+    pointer-events: none;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+.card {
+    position: relative;
+    z-index: 2;
+    width: min(90%, 440px);
+    padding: 35px 25px;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 15px 50px #b99ac755;
+}
+
+.flower {
+    font-size: 45px;
+}
+
+h1 {
+    color: #b16e9c;
+    font-size: 32px;
+    font-weight: normal;
+}
+
+p {
+    line-height: 1.8;
+}
+
+a {
+    display: block;
+    margin-top: 18px;
+    padding: 16px;
+    border-radius: 16px;
+    text-decoration: none;
+    color: #684a70;
+    background: #f0d7f0;
+    transition: transform 0.25s, background 0.25s;
+}
+
+a:hover {
+    transform: translateY(-4px);
+    background: #dfbce8;
+}
+
+.universe {
+    color: #f6eaff;
+    background: #171026;
+    border: 1px solid #b78aff;
+}
+
+.universe:hover {
+    background: #302044;
+}
+
+.small {
+    font-size: 12px;
+    opacity: 0.7;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="petals"></div>
+
+<main class="card">
+    <div class="flower">🌷 🐇 🌷</div>
+
+```
+<h1>Welcome back ♡</h1>
+
+<p>
+    The door is open for you.<br>
+    Where shall we wander today?
+</p>
+
+<a href="note.html">
+    💌 Open my secret notes
+</a>
+
+<a class="universe"
+   href="https://nermine3.github.io/nermin-page2/">
+    ✨ Enter my little universe
+</a>
+
+<p class="small">two little worlds, one you ⋆｡°✩</p>
+```
+
+</main>
+
+<script>
+const decorations = ["♡", "✿", "⭐", "🦋", "🌸", "🐰", "✧", "🍓"];
+
+for (let i = 0; i < 24; i++) {
+    const petal = document.createElement("div");
+
+    petal.className = "petal";
+    petal.textContent =
+        decorations[Math.floor(Math.random() * decorations.length)];
+
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.animationDelay = Math.random() * 8 + "s";
+    petal.style.animationDuration = (6 + Math.random() * 7) + "s";
+    petal.style.fontSize = (12 + Math.random() * 18) + "px";
+
+    document.getElementById("petals").appendChild(petal);
+}
+</script>
+
+</body>
+</html>
 
