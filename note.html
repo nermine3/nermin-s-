@@ -158,6 +158,19 @@ button:hover {
         padding: 25px 20px;
     }
 }
+    
+#musicButton {
+    width: auto;
+    padding: 10px 18px;
+    margin: 12px 0;
+    border: 1px solid #dfb9e6;
+    border-radius: 20px;
+    background: #fffafd;
+    color: #684a70;
+    cursor: pointer;
+}
+
+
 </style>
 </head>
 
@@ -179,7 +192,13 @@ button:hover {
 
 <main class="notebook">
 
-    <div class="flower">🌷 🐇 🌷</div>
+    <div class="flower"> 🐇 </div>
+    
+<button id="musicButton" type="button">♫ Music: OFF</button>
+
+<div id="musicPlayer" style="display:none;"></div>
+
+
 
     <h1>♡</h1>
 
@@ -235,6 +254,35 @@ note.addEventListener("input", saveNote);
 
 // SAVE BUTTON
 saveButton.addEventListener("click", saveNote);
+   
+const musicButton = document.getElementById("musicButton");
+const musicPlayer = document.getElementById("musicPlayer");
+
+const videoID = "Fy9-mskmhQ8&list=RDFy9-mskmhQ8&start_radio=1";
+let musicOn = false;
+
+musicButton.addEventListener("click", function () {
+    if (!musicOn) {
+        musicPlayer.innerHTML = `
+            <iframe
+                width="1"
+                height="1"
+                src="https://www.youtube.com/embed/${videoID}?autoplay=1&loop=1&playlist=${videoID}"
+                allow="autoplay; encrypted-media"
+                title="Background music">
+            </iframe>
+        `;
+
+        musicButton.textContent = "♫ Music: ON";
+        musicOn = true;
+    } else {
+        musicPlayer.innerHTML = "";
+        musicButton.textContent = "♫ Music: OFF";
+        musicOn = false;
+    }
+});
+
+
 </script>
 
 </body>
