@@ -198,7 +198,7 @@ function displayLessons() {
 
         remove.addEventListener("click", function() {
             lessons.splice(index, 1);
-            localStorage.setItem("myLessons", JSON.stringify(lessons));
+          localStorage.setItem("myLessons", JSON.stringify(lessons));
             displayLessons();
         });
 
