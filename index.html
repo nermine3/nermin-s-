@@ -523,37 +523,11 @@ const result = document.getElementById("result");
 const card = document.getElementById("card");
 const musicPlayer = document.getElementById("musicPlayer");
 
+
 let currentMusic = null;
-let musicHasStarted = false;
+let preparedAcceptancePlayer = null;
 
-
-/* =========================================
-   MUSIC SYSTEM
-   Stops the previous song before playing
-   the next one.
-   ========================================= */
-
-function stopMusic() {
-    musicPlayer.innerHTML = "";
-    currentMusic = null;
-    musicHasStarted = false;
-}
-
-function playSong(videoID) {
-
-    // Stop the previous song first.
-    stopMusic();
-
-    if (
-        !videoID ||
-        videoID.startsWith("PUT_") ||
-        videoID.trim() === ""
-    ) {
-        return;
-    }
-
-    currentMusic = videoID;
-
+function createPlayer(videoID, autoplay = true) {
     const player = document.createElement("iframe");
 
     player.width = "1";
@@ -562,36 +536,62 @@ function playSong(videoID) {
     player.src =
         "https://www.youtube.com/embed/" +
         encodeURIComponent(videoID) +
-        "?autoplay=1&playsinline=1&controls=0";
+        "?autoplay=" + (autoplay ? "1" : "0") +
+        "&playsinline=1&controls=0";
 
     player.allow = "autoplay; encrypted-media";
-
     player.title = "Secret Garden music";
 
-    player.setAttribute("aria-hidden", "true");
-
-    musicPlayer.appendChild(player);
-
-    musicHasStarted = true;
+    return player;
 }
 
+function stopMusic() {
+    musicPlayer.innerHTML = "";
+    currentMusic = null;
+    preparedAcceptancePlayer = null;
+}
 
-/* =========================================
-   RECEPTION MUSIC
-   Attempt to start when the page opens.
-   Browsers may block autoplay with sound.
-   ========================================= */
+function playSong(videoID) {
+    stopMusic();
+
+    if (!videoID || videoID.startsWith("PUT_")) return;
+
+    currentMusic = videoID;
+
+    const player = createPlayer(videoID, true);
+
+    musicPlayer.appendChild(player);
+}
 
 window.addEventListener("load", function() {
-
+    // Start reception music.
     if (
         receptionSongID &&
         !receptionSongID.startsWith("PUT_")
     ) {
-        playSong(receptionSongID);
+        currentMusic = receptionSongID;
+        musicPlayer.appendChild(
+            createPlayer(receptionSongID, true)
+        );
     }
 
+    // Prepare the acceptance player in advance.
+    // It loads the video without intentionally starting playback.
+    if (
+        acceptanceSongID &&
+        !acceptanceSongID.startsWith("PUT_")
+    ) {
+        preparedAcceptancePlayer = createPlayer(
+            acceptanceSongID,
+            false
+        );
+
+        preparedAcceptancePlayer.style.display = "none";
+
+        document.body.appendChild(preparedAcceptancePlayer);
+    }
 });
+
 
 
 /* =========================================
@@ -770,7 +770,22 @@ form.addEventListener("submit", function(event) {
     
 // Switch music immediately.
 stopMusic();
-playSong(acceptanceSongID);
+
+if (preparedAcceptancePlayer) {
+    preparedAcceptancePlayer.src =
+        "https://www.youtube.com/embed/" +
+        encodeURIComponent(acceptanceSongID) +
+        "?autoplay=1&playsinline=1&controls=0";
+
+    musicPlayer.appendChild(preparedAcceptancePlayer);
+
+    preparedAcceptancePlayer.style.display = "block";
+
+    currentMusic = acceptanceSongID;
+    preparedAcceptancePlayer = null;
+} else {
+    playSong(acceptanceSongID);
+}
 
 // Start visual effects immediately.
 purpleVerification();
