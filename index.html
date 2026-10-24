@@ -767,14 +767,15 @@ form.addEventListener("submit", function(event) {
             </a>
         `;
 
-        // Stop reception music and play acceptance music.
-        playSong(acceptanceSongID);
+    
+// Switch music immediately.
+stopMusic();
+playSong(acceptanceSongID);
 
-        // Purple verification shake.
-        purpleVerification();
+// Start visual effects immediately.
+purpleVerification();
+happyCelebration();
 
-        // Happy colorful celebration.
-        happyCelebration();
 
     }
 
