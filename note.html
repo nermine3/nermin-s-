@@ -300,19 +300,23 @@ saveButton.addEventListener("click", saveNote);
 const musicButton = document.getElementById("musicButton");
 const musicPlayer = document.getElementById("musicPlayer");
 
+const musicButton = document.getElementById("musicButton");
+const musicPlayer = document.getElementById("musicPlayer");
+
 const videoID = "gP9sGBywjks";
-let musicOn = true;
+let musicOn = false;
 
 function playRain() {
     musicPlayer.innerHTML = `
         <iframe
-            width="200"
-            height="100"
+            width="0"
+            height="0"
             src="https://www.youtube.com/embed/${videoID}?autoplay=1&loop=1&playlist=${videoID}"
-            allow="autoplay; encrypted-media"
-            title="Rain sounds">
+            allow="autoplay"
+            title="Rain audio">
         </iframe>
     `;
+
     musicButton.textContent = "♫ Rain: ON";
     musicOn = true;
 }
@@ -332,6 +336,8 @@ musicButton.addEventListener("click", function () {
 });
 
 playRain();
+
+
 
 
 </script>
