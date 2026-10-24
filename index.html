@@ -667,7 +667,7 @@ function happyCelebration() {
 
     setTimeout(() => {
         celebration.remove();
-    }, 2100);
+    }, 7000);
 
 
     // Shake the card happily.
@@ -689,53 +689,36 @@ function happyCelebration() {
 
 
     // Colorful falling confetti.
+
+    // Colorful falling confetti — slower and longer.
     const colors = [
-        "#ff69b4",
-        "#c084fc",
-        "#60a5fa",
-        "#facc15",
-        "#4ade80",
-        "#fb7185",
-        "#a78bfa",
-        "#ffffff",
-        "#ff9f43",
-        "#22d3ee"
+        "#ff69b4", "#c084fc", "#60a5fa", "#facc15",
+        "#4ade80", "#fb7185", "#a78bfa", "#ffffff",
+        "#ff9f43", "#22d3ee"
     ];
 
-    const shapes = [
-        "✦", "♡", "✿", "★", "✧", "♥", "❀"
-    ];
+    const shapes = ["✦", "♡", "✿", "★", "✧", "♥", "❀"];
 
-    for (let i = 0; i < 90; i++) {
-
+    for (let i = 0; i < 120; i++) {
         const piece = document.createElement("div");
 
         piece.className = "confetti";
-
-        piece.textContent =
-            shapes[Math.floor(Math.random() * shapes.length)];
+        piece.textContent = shapes[Math.floor(Math.random() * shapes.length)];
 
         piece.style.left = Math.random() * 100 + "vw";
+        piece.style.color = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.fontSize = (14 + Math.random() * 24) + "px";
 
-        piece.style.color =
-            colors[Math.floor(Math.random() * colors.length)];
-
-        piece.style.fontSize =
-            (12 + Math.random() * 24) + "px";
-
-        piece.style.animationDuration =
-            (1.5 + Math.random() * 2) + "s";
-
-        piece.style.animationDelay =
-            Math.random() * 0.8 + "s";
+        piece.style.animationDuration = (5 + Math.random() * 4) + "s";
+        piece.style.animationDelay = (Math.random() * 1.5) + "s";
 
         document.body.appendChild(piece);
 
         setTimeout(() => {
             piece.remove();
-        }, 4500);
-
+        }, 11000);
     }
+
 
 }
 
@@ -843,7 +826,7 @@ happyCelebration();
 
         setTimeout(() => {
             alert.remove();
-        }, 1200);
+        }, 7000);
 
         // Giant angry emoji.
         const doom = document.createElement("div");
