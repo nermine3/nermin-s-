@@ -7,7 +7,9 @@
 <title>space ݁ ˖Ი𐑼⋆</title>
 
 <style>
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
@@ -19,7 +21,10 @@ body {
     background: linear-gradient(135deg, #fce4ec, #eadcf8, #d9eaf7);
     color: #684a70;
     overflow: hidden;
+    transition: background 0.5s ease;
 }
+
+/* FALLING DECORATIONS */
 
 .petal {
     position: fixed;
@@ -27,11 +32,16 @@ body {
     z-index: 1;
     animation: fall 8s linear infinite;
     pointer-events: none;
+    user-select: none;
 }
 
 @keyframes fall {
-    to { transform: translateY(110vh) rotate(360deg); }
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
 }
+
+/* MAIN CARD */
 
 .card {
     position: relative;
@@ -53,7 +63,9 @@ body {
 }
 
 @keyframes sway {
-    50% { transform: rotate(12deg); }
+    50% {
+        transform: rotate(12deg);
+    }
 }
 
 h1 {
@@ -61,7 +73,11 @@ h1 {
     font-size: 36px;
 }
 
-p { line-height: 1.7; }
+p {
+    line-height: 1.7;
+}
+
+/* INPUT */
 
 input {
     width: 100%;
@@ -79,7 +95,10 @@ input:focus {
     box-shadow: 0 0 12px #dfb9e688;
 }
 
-button, .continue-link {
+/* BUTTONS */
+
+button,
+.continue-link {
     display: inline-block;
     width: 100%;
     padding: 14px;
@@ -91,9 +110,11 @@ button, .continue-link {
     font-size: 15px;
     text-decoration: none;
     cursor: pointer;
+    transition: background 0.3s;
 }
 
-button:hover, .continue-link:hover {
+button:hover,
+.continue-link:hover {
     background: #d8a9df;
 }
 
@@ -108,18 +129,47 @@ button:hover, .continue-link:hover {
     opacity: 0.7;
 }
 
-.shake { animation: shake 1.5s ease-in-out; }
+/* WRONG NAME: ORIGINAL SHAKE */
+
+.shake {
+    animation: shake 1.5s ease-in-out;
+}
 
 @keyframes shake {
-    0%, 100% { transform: translate(0,0) rotate(0); }
-    10% { transform: translate(12px,-5px) rotate(3deg); }
-    20% { transform: translate(-15px,4px) rotate(-4deg); }
-    30% { transform: translate(12px,-6px) rotate(3deg); }
-    40% { transform: translate(-15px,0) rotate(-4deg); }
-    50% { transform: translate(10px,-5px) rotate(3deg); }
-    60% { transform: translate(-12px,0) rotate(-3deg); }
-    80% { transform: translate(5px,0) rotate(1deg); }
+    0%, 100% {
+        transform: translate(0, 0) rotate(0);
+    }
+
+    10% {
+        transform: translate(12px, -5px) rotate(3deg);
+    }
+
+    20% {
+        transform: translate(-15px, 4px) rotate(-4deg);
+    }
+
+    30% {
+        transform: translate(12px, -6px) rotate(3deg);
+    }
+
+    40% {
+        transform: translate(-15px, 0) rotate(-4deg);
+    }
+
+    50% {
+        transform: translate(10px, -5px) rotate(3deg);
+    }
+
+    60% {
+        transform: translate(-12px, 0) rotate(-3deg);
+    }
+
+    80% {
+        transform: translate(5px, 0) rotate(1deg);
+    }
 }
+
+/* WRONG NAME: ANGRY EMOJI */
 
 .angry-doom {
     position: fixed;
@@ -133,22 +183,56 @@ button:hover, .continue-link:hover {
 }
 
 @keyframes angryApocalypse {
-    0%, 100% { transform: translate(-50%,-50%) scale(0); }
-    10% { transform: translate(-50%,-50%) scale(1); }
-    45% { transform: translate(-50%,-50%) scale(15); }
-    65% { transform: translate(-50%,-50%) scale(25); }
-    80% { transform: translate(-50%,-50%) scale(10); }
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+
+    10% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    45% {
+        transform: translate(-50%, -50%) scale(15);
+    }
+
+    65% {
+        transform: translate(-50%, -50%) scale(25);
+    }
+
+    80% {
+        transform: translate(-50%, -50%) scale(10);
+    }
 }
 
-.screen-shake { animation: screenShake 0.5s ease-in-out; }
+/* WRONG NAME: SCREEN SHAKE */
+
+.screen-shake {
+    animation: screenShake 0.5s ease-in-out;
+}
 
 @keyframes screenShake {
-    0%, 100% { transform: translate(0,0); }
-    20% { transform: translate(-5px,3px); }
-    40% { transform: translate(5px,-3px); }
-    60% { transform: translate(-4px,-2px); }
-    80% { transform: translate(4px,2px); }
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+
+    20% {
+        transform: translate(-5px, 3px);
+    }
+
+    40% {
+        transform: translate(5px, -3px);
+    }
+
+    60% {
+        transform: translate(-4px, -2px);
+    }
+
+    80% {
+        transform: translate(4px, 2px);
+    }
 }
+
+/* WRONG NAME: RED ALERT */
 
 .red-alert {
     position: fixed;
@@ -160,12 +244,192 @@ button:hover, .continue-link:hover {
 }
 
 @keyframes alertFlash {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
+    0%, 100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
+/* NEW: PURPLE VERIFICATION SHAKE */
+
+.purple-alert {
+    position: fixed;
+    inset: 0;
+    z-index: 9996;
+    pointer-events: none;
+    background: rgba(153, 51, 255, 0.28);
+    animation: purpleFlash 0.22s ease-in-out 5;
+}
+
+@keyframes purpleFlash {
+    0%, 100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.purple-shake {
+    animation: purpleShake 0.75s ease-in-out;
+}
+
+@keyframes purpleShake {
+    0%, 100% {
+        transform: translate(0, 0);
+        filter: hue-rotate(0deg);
+    }
+
+    15% {
+        transform: translate(-8px, 4px) rotate(-1deg);
+        filter: hue-rotate(35deg);
+    }
+
+    30% {
+        transform: translate(8px, -4px) rotate(1deg);
+        filter: hue-rotate(75deg);
+    }
+
+    45% {
+        transform: translate(-7px, -3px) rotate(-1deg);
+        filter: hue-rotate(120deg);
+    }
+
+    60% {
+        transform: translate(7px, 3px) rotate(1deg);
+        filter: hue-rotate(180deg);
+    }
+
+    80% {
+        transform: translate(-3px, 2px);
+        filter: hue-rotate(240deg);
+    }
+}
+
+/* NEW: HAPPY CELEBRATION OVERLAY */
+
+.celebration {
+    position: fixed;
+    inset: 0;
+    z-index: 9997;
+    pointer-events: none;
+    background: linear-gradient(
+        120deg,
+        rgba(255, 80, 180, 0.20),
+        rgba(120, 80, 255, 0.20),
+        rgba(50, 220, 255, 0.20),
+        rgba(255, 230, 70, 0.20),
+        rgba(90, 255, 170, 0.20)
+    );
+    background-size: 400% 400%;
+    animation: rainbowBackground 2s ease-in-out;
+}
+
+@keyframes rainbowBackground {
+    0% {
+        opacity: 0;
+        background-position: 0% 50%;
+    }
+
+    25% {
+        opacity: 1;
+        background-position: 100% 50%;
+    }
+
+    50% {
+        opacity: 0.85;
+        background-position: 0% 100%;
+    }
+
+    75% {
+        opacity: 1;
+        background-position: 100% 0%;
+    }
+
+    100% {
+        opacity: 0;
+        background-position: 0% 50%;
+    }
+}
+
+/* EVERYTHING SHAKES HAPPILY */
+
+.happy-shake {
+    animation: happyShake 0.65s ease-in-out 3;
+}
+
+@keyframes happyShake {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0) scale(1);
+    }
+
+    10% {
+        transform: translate(-9px, -6px) rotate(-2deg) scale(1.02);
+    }
+
+    20% {
+        transform: translate(9px, 5px) rotate(2deg) scale(1.04);
+    }
+
+    30% {
+        transform: translate(-8px, 4px) rotate(-2deg) scale(1.02);
+    }
+
+    40% {
+        transform: translate(8px, -5px) rotate(2deg) scale(1.05);
+    }
+
+    50% {
+        transform: translate(-6px, -3px) rotate(-1deg) scale(1.03);
+    }
+
+    60% {
+        transform: translate(6px, 4px) rotate(1deg) scale(1.04);
+    }
+
+    80% {
+        transform: translate(-3px, 2px) rotate(-1deg) scale(1.01);
+    }
+}
+
+/* COLORFUL CONFETTI */
+
+.confetti {
+    position: fixed;
+    top: -30px;
+    z-index: 10000;
+    pointer-events: none;
+    animation: confettiFall 2.5s ease-in forwards;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-10vh) rotate(0deg) scale(0.5);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(5vh) rotate(90deg) scale(1);
+    }
+
+    100% {
+        transform: translateY(115vh) rotate(900deg) scale(0.7);
+        opacity: 0;
+    }
+}
+
+/* REDUCE MOTION ACCESSIBILITY */
+
 @media (prefers-reduced-motion: reduce) {
-    .petal, .flower { animation: none; }
+    .petal,
+    .flower {
+        animation: none;
+    }
 }
 </style>
 </head>
@@ -175,21 +439,25 @@ button:hover, .continue-link:hover {
 <div id="petals"></div>
 
 <main class="card" id="card">
+
     <div class="flower">🍓</div>
 
     <h1>nermin's</h1>
 
     <p>
         A space.<br>
+
         <img
             src="https://user-images.githubusercontent.com/74038190/226190908-cd4e0a61-801d-4b69-955b-5bd82eb7c10e.gif"
             alt="Cute animation"
             width="120"
         ><br>
-       HMM Who's trying to get in?
+
+        HMM Who's trying to get in?
     </p>
 
     <form id="nameForm">
+
         <input
             id="name"
             type="text"
@@ -197,25 +465,42 @@ button:hover, .continue-link:hover {
             autocomplete="off"
             required
         >
+
         <button type="submit">Open the door</button>
+
     </form>
 
     <div id="result" aria-live="polite"></div>
 
     <p class="small">pixels :p ♡</p>
+
 </main>
 
-<div id="musicPlayer" style="position:fixed;width:1px;height:1px;overflow:hidden;"></div>
+<!-- MUSIC PLAYER -->
+
+<div
+    id="musicPlayer"
+    style="position:fixed;width:1px;height:1px;overflow:hidden;"
+></div>
 
 <script>
-// PUT ONLY THE VIDEO ID HERE.
-// Example: https://www.youtube.com/watch?v=ABC123
-// Video ID: ABC123
 
+/* =========================================
+   YOUR THREE YOUTUBE MUSIC SLOTS
+   Paste ONLY the code after v= in each URL.
+   ========================================= */
+
+// 1. Reception music: plays when the page opens.
+const receptionSongID = "PUT_RECEPTION_VIDEO_ID_HERE";
+
+// 2. Music when your name is accepted.
 const acceptanceSongID = "H5CR1dNOA-I";
 
-// Rejection song already in your original code:
+// 3. Music when the wrong name is entered.
 const rejectionSongID = "lYKKdw_d2Hw";
+
+
+/* ACCEPTED NAMES */
 
 const acceptedNames = [
     "nermine",
@@ -229,113 +514,369 @@ const acceptedNames = [
     "nermina"
 ];
 
+
+/* ELEMENTS */
+
 const form = document.getElementById("nameForm");
 const input = document.getElementById("name");
 const result = document.getElementById("result");
 const card = document.getElementById("card");
 const musicPlayer = document.getElementById("musicPlayer");
 
-function playSong(videoID) {
-    if (!videoID || videoID === "PUT_VIDEO_ID_HERE") return;
+let currentMusic = null;
+let musicHasStarted = false;
 
+
+/* =========================================
+   MUSIC SYSTEM
+   Stops the previous song before playing
+   the next one.
+   ========================================= */
+
+function stopMusic() {
     musicPlayer.innerHTML = "";
+    currentMusic = null;
+    musicHasStarted = false;
+}
+
+function playSong(videoID) {
+
+    // Stop the previous song first.
+    stopMusic();
+
+    if (
+        !videoID ||
+        videoID.startsWith("PUT_") ||
+        videoID.trim() === ""
+    ) {
+        return;
+    }
+
+    currentMusic = videoID;
 
     const player = document.createElement("iframe");
 
     player.width = "1";
     player.height = "1";
+
     player.src =
         "https://www.youtube.com/embed/" +
         encodeURIComponent(videoID) +
-        "?autoplay=1";
+        "?autoplay=1&playsinline=1&controls=0";
 
     player.allow = "autoplay; encrypted-media";
-    player.title = "Garden music";
+
+    player.title = "Secret Garden music";
+
+    player.setAttribute("aria-hidden", "true");
 
     musicPlayer.appendChild(player);
+
+    musicHasStarted = true;
 }
 
+
+/* =========================================
+   RECEPTION MUSIC
+   Attempt to start when the page opens.
+   Browsers may block autoplay with sound.
+   ========================================= */
+
+window.addEventListener("load", function() {
+
+    if (
+        receptionSongID &&
+        !receptionSongID.startsWith("PUT_")
+    ) {
+        playSong(receptionSongID);
+    }
+
+});
+
+
+/* =========================================
+   RESET OLD ANIMATIONS
+   ========================================= */
+
+function clearEffects() {
+
+    card.classList.remove(
+        "shake",
+        "purple-shake",
+        "happy-shake"
+    );
+
+    document.body.classList.remove("screen-shake");
+
+    document.querySelectorAll(
+        ".angry-doom, .red-alert, .purple-alert, .celebration, .confetti"
+    ).forEach(element => element.remove());
+
+}
+
+
+/* =========================================
+   PURPLE VERIFICATION EFFECT
+   ========================================= */
+
+function purpleVerification() {
+
+    void card.offsetWidth;
+
+    card.classList.add("purple-shake");
+
+    document.body.classList.add("screen-shake");
+
+    const alert = document.createElement("div");
+
+    alert.className = "purple-alert";
+
+    document.body.appendChild(alert);
+
+    setTimeout(() => {
+        alert.remove();
+    }, 1200);
+
+    setTimeout(() => {
+        card.classList.remove("purple-shake");
+        document.body.classList.remove("screen-shake");
+    }, 900);
+
+}
+
+
+/* =========================================
+   HAPPY RAINBOW CELEBRATION
+   ========================================= */
+
+function happyCelebration() {
+
+    // Colorful full-screen overlay.
+    const celebration = document.createElement("div");
+
+    celebration.className = "celebration";
+
+    document.body.appendChild(celebration);
+
+    setTimeout(() => {
+        celebration.remove();
+    }, 2100);
+
+
+    // Shake the card happily.
+    void card.offsetWidth;
+
+    card.classList.add("happy-shake");
+
+    setTimeout(() => {
+        card.classList.remove("happy-shake");
+    }, 2000);
+
+
+    // Shake the whole screen.
+    document.body.classList.add("screen-shake");
+
+    setTimeout(() => {
+        document.body.classList.remove("screen-shake");
+    }, 600);
+
+
+    // Colorful falling confetti.
+    const colors = [
+        "#ff69b4",
+        "#c084fc",
+        "#60a5fa",
+        "#facc15",
+        "#4ade80",
+        "#fb7185",
+        "#a78bfa",
+        "#ffffff",
+        "#ff9f43",
+        "#22d3ee"
+    ];
+
+    const shapes = [
+        "✦", "♡", "✿", "★", "✧", "♥", "❀", "⭐", "🎉"
+    ];
+
+    for (let i = 0; i < 90; i++) {
+
+        const piece = document.createElement("div");
+
+        piece.className = "confetti";
+
+        piece.textContent =
+            shapes[Math.floor(Math.random() * shapes.length)];
+
+        piece.style.left = Math.random() * 100 + "vw";
+
+        piece.style.color =
+            colors[Math.floor(Math.random() * colors.length)];
+
+        piece.style.fontSize =
+            (12 + Math.random() * 24) + "px";
+
+        piece.style.animationDuration =
+            (1.5 + Math.random() * 2) + "s";
+
+        piece.style.animationDelay =
+            Math.random() * 0.8 + "s";
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => {
+            piece.remove();
+        }, 4500);
+
+    }
+
+}
+
+
+/* =========================================
+   NAME VERIFICATION
+   ========================================= */
+
 form.addEventListener("submit", function(event) {
+
     event.preventDefault();
 
     const name = input.value.trim().toLowerCase();
 
-    card.classList.remove("shake");
-    document.querySelectorAll(".angry-doom, .red-alert")
-        .forEach(element => element.remove());
-    document.body.classList.remove("screen-shake");
+    // Remove previous visual effects.
+    clearEffects();
+
+
+    /* ACCEPTED NAME */
 
     if (acceptedNames.includes(name)) {
+
         result.innerHTML = `
             <div style="font-size:36px">
                 𓍢ִ໋ 🐇 𓍢ִ໋
             </div>
+
             <strong>˚₊‧꒰ა 𓂋 ໒꒱ ‧₊˚</strong><br>
+
             °❀.ೃ࿔*⟡ welcome back! °❀.ೃ࿔*♡<br>
+
             Come in ♡<br><br>
+
             <a class="continue-link" href="choice.html">
                 Enter here ♡
             </a>
         `;
 
-        // Play your acceptance song.
+        // Stop reception music and play acceptance music.
         playSong(acceptanceSongID);
 
-    } else {
+        // Purple verification shake.
+        purpleVerification();
+
+        // Happy colorful celebration.
+        happyCelebration();
+
+    }
+
+
+    /* REJECTED NAME */
+
+    else {
+
         result.innerHTML = `
-            <div style="font-size:42px">🚪🐈‍⬛</div>
+            <div style="font-size:42px">
+                🚪🐈‍⬛
+            </div>
+
             <strong>UMMMM... EXCUSE ME???</strong><br>
+
             WRONG ANSWER.. 🤬<br>
+
             WHO INVITED YOU????<br>
+
             THIS IS A PRIVATE TERRITORY.<br>
+
             CAN'T YOU SEE??!<br>
+
             <strong>LEAVE. NOW!!! THANK YOU.</strong>
         `;
 
+        // Original card shake.
         void card.offsetWidth;
+
         card.classList.add("shake");
 
+        // Original screen shake.
         void document.body.offsetWidth;
+
         document.body.classList.add("screen-shake");
 
+        // Red alert.
         const alert = document.createElement("div");
+
         alert.className = "red-alert";
+
         document.body.appendChild(alert);
 
-        setTimeout(() => alert.remove(), 1200);
+        setTimeout(() => {
+            alert.remove();
+        }, 1200);
 
+        // Giant angry emoji.
         const doom = document.createElement("div");
+
         doom.className = "angry-doom";
+
         doom.textContent = "🤬";
+
         document.body.appendChild(doom);
 
-        setTimeout(() => doom.remove(), 3000);
+        setTimeout(() => {
+            doom.remove();
+        }, 3000);
 
+        // Stop reception music and play rejection music.
         playSong(rejectionSongID);
+
     }
+
 });
+
+
+/* =========================================
+   FALLING DECORATIONS
+   ========================================= */
 
 const decorations = [
     "🙀", "♡", "✿", "⭐", "🦋", "✧", "🌸",
-    "❤︎", "˚˖𓍢ִ໋", "🐰",
-    "🦋", "🍓", "´ཀ`",
+    "❤︎", "˚˖𓍢ִ໋", "🐰", "🦋", "🍓", "´ཀ`",
     "🍓"
 ];
 
 for (let i = 0; i < 22; i++) {
+
     const petal = document.createElement("div");
+
     petal.className = "petal";
 
     petal.textContent =
         decorations[Math.floor(Math.random() * decorations.length)];
 
     petal.style.left = Math.random() * 100 + "vw";
-    petal.style.animationDelay = Math.random() * 8 + "s";
-    petal.style.animationDuration = (6 + Math.random() * 7) + "s";
-    petal.style.fontSize = (12 + Math.random() * 18) + "px";
+
+    petal.style.animationDelay =
+        Math.random() * 8 + "s";
+
+    petal.style.animationDuration =
+        (6 + Math.random() * 7) + "s";
+
+    petal.style.fontSize =
+        (12 + Math.random() * 18) + "px";
 
     document.getElementById("petals").appendChild(petal);
+
 }
+
 </script>
 
 </body>
