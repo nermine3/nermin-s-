@@ -526,6 +526,7 @@ const musicPlayer = document.getElementById("musicPlayer");
 
 let currentMusic = null;
 let preparedAcceptancePlayer = null;
+let preparedRejectionPlayer = null;
 
 function createPlayer(videoID, autoplay = true) {
     const player = document.createElement("iframe");
@@ -590,6 +591,12 @@ window.addEventListener("load", function() {
 
         document.body.appendChild(preparedAcceptancePlayer);
     }
+    // Preload rejection music in advance.
+if (rejectionSongID && !rejectionSongID.startsWith("PUT_")) {
+    preparedRejectionPlayer = createPlayer(rejectionSongID, false);
+    preparedRejectionPlayer.style.display = "none";
+    document.body.appendChild(preparedRejectionPlayer);
+}
 });
 
 
@@ -852,7 +859,24 @@ happyCelebration();
         }, 3000);
 
         // Stop reception music and play rejection music.
-        playSong(rejectionSongID);
+       stopMusic();
+
+if (preparedRejectionPlayer) {
+    preparedRejectionPlayer.src =
+        "https://www.youtube.com/embed/" +
+        encodeURIComponent(rejectionSongID) +
+        "?autoplay=1&playsinline=1&controls=0";
+
+    musicPlayer.appendChild(preparedRejectionPlayer);
+
+    preparedRejectionPlayer.style.display = "block";
+
+    currentMusic = rejectionSongID;
+    preparedRejectionPlayer = null;
+
+} else {
+    playSong(rejectionSongID);
+}
 
     }
 
