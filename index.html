@@ -472,7 +472,7 @@ button:hover,
             required
         >
 
-        <button type="submit">Open the door</button>
+        <button type="submit" id="doorButton">Open the door</button>
 
     </form>
 
@@ -786,6 +786,9 @@ if (preparedAcceptancePlayer) {
 // Start visual effects immediately.
 purpleVerification();
 happyCelebration();
+        
+document.getElementById("doorButton").textContent = "Go below ↓";
+
 
 
     }
