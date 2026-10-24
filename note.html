@@ -222,10 +222,18 @@ button:hover {
 
     <div class="flower"> 🐇 </div>
     
-<button id="musicButton" type="button">♫ Music: OFF</button>
+<button id="musicButton" type="button">♫ Rain: ON</button>
 
-<div id="musicPlayer" style="display:none;"></div>
-
+<div id="musicPlayer">
+    <iframe
+        id="rainFrame"
+        width="1"
+        height="1"
+        src="https://www.youtube.com/embed/gP9sGBywjks?autoplay=1&loop=1&playlist=gP9sGBywjks"
+        allow="autoplay; encrypted-media"
+        title="Rain sounds">
+    </iframe>
+</div>
 
 
     <h1>♡</h1>
@@ -292,27 +300,25 @@ saveButton.addEventListener("click", saveNote);
 const musicButton = document.getElementById("musicButton");
 const musicPlayer = document.getElementById("musicPlayer");
 
-const videoID = "gP9sGBywjks";
-let musicOn = false;
+let musicOn = true;
 
 musicButton.addEventListener("click", function () {
-    if (!musicOn) {
+    if (musicOn) {
+        musicPlayer.innerHTML = "";
+        musicButton.textContent = "♫ Rain: OFF";
+        musicOn = false;
+    } else {
         musicPlayer.innerHTML = `
             <iframe
                 width="1"
                 height="1"
-                src="https://www.youtube.com/embed/${videoID}?autoplay=1&loop=1&playlist=${videoID}"
+                src="https://www.youtube.com/embed/gP9sGBywjks?autoplay=1&loop=1&playlist=gP9sGBywjks"
                 allow="autoplay; encrypted-media"
-                title="Background music"> 
+                title="Rain sounds">
             </iframe>
         `;
-
-        musicButton.textContent = "♫ Music: ON";
+        musicButton.textContent = "♫ Rain: ON";
         musicOn = true;
-    } else {
-        musicPlayer.innerHTML = "";
-        musicButton.textContent = "♫ Music: OFF";
-        musicOn = false;
     }
 });
 
