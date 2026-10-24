@@ -179,30 +179,44 @@ button:hover,
     font-size: 80px;
     pointer-events: none;
     transform: translate(-50%, -50%);
-    animation: angryApocalypse 3s ease-in-out forwards;
+    animation: angryApocalypse 7s ease-in-out forwards;
+
 }
 
+
 @keyframes angryApocalypse {
-    0%, 100% {
+    0% {
         transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
     }
 
-    10% {
-        transform: translate(-50%, -50%) scale(1);
+    15% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 1;
     }
 
-    45% {
+    40% {
         transform: translate(-50%, -50%) scale(15);
+        opacity: 1;
     }
 
     65% {
         transform: translate(-50%, -50%) scale(25);
+        opacity: 1;
     }
 
-    80% {
-        transform: translate(-50%, -50%) scale(10);
+    85% {
+        transform: translate(-50%, -50%) scale(25);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(25);
+        opacity: 0;
     }
 }
+
+
 
 /* WRONG NAME: SCREEN SHAKE */
 
@@ -863,8 +877,8 @@ if (preparedRejectionPlayer) {
    ========================================= */
 
 const decorations = [
-    "🙀", "♡", "✿", "⭐", "🦋", "✧", "🌸",
-    "❤︎", "˚˖𓍢ִ໋", "🐰", "🦋", "🍓", "´ཀ`",
+    "💧", "💧", "✿", "💧", "🦋", "✧", "🌸",
+    "❤︎", "˚˖𓍢ִ໋", "💧", "🦋", "🍓", "💧",
     "🍓"
 ];
 
