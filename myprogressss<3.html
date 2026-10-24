@@ -167,7 +167,8 @@ const dateInput = document.getElementById("date");
 
 dateInput.value = new Date().toISOString().slice(0, 10);
 
-let lessons = JSON.parse(localStorage.getItem("myLessons")) || [];
+let lessons = JSON.parse(localStorage.getItem("myLessons") || "null")
+    || JSON.parse(localStorage.getItem("nermine's Lessons :P") || "[]");
 
 function displayLessons() {
     entries.innerHTML = "";
