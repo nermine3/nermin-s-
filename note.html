@@ -272,24 +272,26 @@ Write  here...
 
 </main>
 
+
 <script>
 const note = document.getElementById("myNote");
 const saveButton = document.getElementById("saveButton");
 const saveStatus = document.getElementById("saveStatus");
 
-// LOAD YOUR PREVIOUS NOTE
+// Load the previous note
 note.value = localStorage.getItem("secretGardenNote") || "";
 
-// SAVE THE NOTE
+// Save the note
 function saveNote() {
-    try {
-        localStorage.setItem("secretGardenNote", note.value);
-        saveStatus.textContent = "Saved. Your little universe is safe. ♡";
-    } catch (error) {
-        saveStatus.textContent =
-            "Couldn't save. Your browser storage may be unavailable.";
-    }
+    localStorage.setItem("secretGardenNote", note.value);
+    saveStatus.textContent = "Saved ♡";
 }
+
+// Connect the button
+saveButton.addEventListener("click", saveNote);
+</script>
+
+
 
 // SAVE AUTOMATICALLY WHEN YOU WRITE
 note.addEventListener("input", saveNote);
