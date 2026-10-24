@@ -256,14 +256,14 @@ button:hover {
 
 Write  here...
 
-thoughts."
+.."
         spellcheck="false"
     ></textarea>
 
     <button id="saveButton">Save ♡</button>
 
     <div id="saveStatus" aria-live="polite">
-        notebook is ready.
+         is ready.
     </div>
 
     <a class="back" href="index.html">← Return</a>
@@ -300,27 +300,38 @@ saveButton.addEventListener("click", saveNote);
 const musicButton = document.getElementById("musicButton");
 const musicPlayer = document.getElementById("musicPlayer");
 
+const videoID = "gP9sGBywjks";
 let musicOn = true;
+
+function playRain() {
+    musicPlayer.innerHTML = `
+        <iframe
+            width="200"
+            height="100"
+            src="https://www.youtube.com/embed/${videoID}?autoplay=1&loop=1&playlist=${videoID}"
+            allow="autoplay; encrypted-media"
+            title="Rain sounds">
+        </iframe>
+    `;
+    musicButton.textContent = "♫ Rain: ON";
+    musicOn = true;
+}
+
+function stopRain() {
+    musicPlayer.innerHTML = "";
+    musicButton.textContent = "♫ Rain: OFF";
+    musicOn = false;
+}
 
 musicButton.addEventListener("click", function () {
     if (musicOn) {
-        musicPlayer.innerHTML = "";
-        musicButton.textContent = "♫ Rain: OFF";
-        musicOn = false;
+        stopRain();
     } else {
-        musicPlayer.innerHTML = `
-            <iframe
-                width="1"
-                height="1"
-                src="https://www.youtube.com/embed/gP9sGBywjks?autoplay=1&loop=1&playlist=gP9sGBywjks"
-                allow="autoplay; encrypted-media"
-                title="Rain sounds">
-            </iframe>
-        `;
-        musicButton.textContent = "♫ Rain: ON";
-        musicOn = true;
+        playRain();
     }
 });
+
+playRain();
 
 
 </script>
